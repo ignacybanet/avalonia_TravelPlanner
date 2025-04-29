@@ -4,6 +4,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="avalonia_TravelPlanner.MainWindow"
-        Title="avalonia_TravelPlanner">
-    Welcome to Avalonia!
+        Title="Travel Planner">
+    <StackPanel>
+        <StackPanel x:Name="UserData">
+            <TextBlock Text="First Name:" Margin="20"/>
+            <TextBox x:Name="FirstName"
+                     HorizontalAlignment="Left"
+                     Margin="20 0 0 0"
+                     Width="250"
+                     />
+            
+            <TextBlock Text="Last Name:" Margin="20"/>
+            <TextBox x:Name="LastName"
+                     HorizontalAlignment="Left"
+                     Margin="20 0 0 0"
+                     Width="250"
+            />
+        </StackPanel>
+    </StackPanel>
 </Window>
