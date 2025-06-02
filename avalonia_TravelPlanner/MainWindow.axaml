@@ -2,24 +2,122 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
         x:Class="avalonia_TravelPlanner.MainWindow"
-        Title="Travel Planner">
-    <StackPanel>
-        <StackPanel x:Name="UserData">
-            <TextBlock Text="First Name:" Margin="20"/>
-            <TextBox x:Name="FirstName"
-                     HorizontalAlignment="Left"
-                     Margin="20 0 0 0"
-                     Width="250"
-                     />
-            
-            <TextBlock Text="Last Name:" Margin="20"/>
-            <TextBox x:Name="LastName"
-                     HorizontalAlignment="Left"
-                     Margin="20 0 0 0"
-                     Width="250"
-            />
+        Width="1920" Height="1080"
+        Title="Travel Planner"
+        Background="#f5f5f5">
+    
+    <Window.Styles>
+        <Style Selector="Border.mainContainer">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Padding" Value="20"/>
+        </Style>
+        
+        <Style Selector="TextBlock.header">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0 0 0 20"/>
+        </Style>
+        
+        <Style Selector="Border.formSection">
+            <Setter Property="Background" Value="#ffffff"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="BorderBrush" Value="#dedede"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Styles>
+    
+    <Border Classes="mainContainer">
+        <StackPanel>
+            <Border Classes="formSection">
+                <StackPanel Width="1000">
+                    <TextBlock Classes="header" 
+                             TextAlignment="Center" 
+                             HorizontalAlignment="Center"
+                             >
+                        Zaplanuj swoją wymarzoną podróż
+                    </TextBlock>
+                    
+                    <Grid RowDefinitions="* * * *" ColumnDefinitions="* *">
+                        <Border Classes="formSection" Grid.Row="0" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">Imię:</TextBlock>
+                                <TextBox x:Name="FirstName" Width="200" Margin="5 0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="0" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">Nazwisko:</TextBlock>
+                                <TextBox x:Name="LastName" Width="200" Margin="5 0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="1" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">Wybierz kraj:</TextBlock>
+                                <ComboBox x:Name="ChosenCountry" Margin="5 0" Width="200">
+                                    <ComboBoxItem>Niemcy</ComboBoxItem>
+                                    <ComboBoxItem>Japonia</ComboBoxItem>
+                                    <ComboBoxItem>Wielka Brytania</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="1" Grid.Column="1">
+                            <!-- TODO zdjęcie -->
+                            <Image x:Name="RespectiveImage"/>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="2" Grid.Column="0">
+                            <StackPanel>
+                                <TextBlock>Wybierz atrakcje:</TextBlock>
+                                <StackPanel Margin="10 5">
+                                    <CheckBox Margin="0 5">Parki narodowe</CheckBox>
+                                    <CheckBox Margin="0 5">Zabytki</CheckBox>
+                                    <CheckBox Margin="0 5">Miejsca historyczne</CheckBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="2" Grid.Column="1">
+                            <StackPanel>
+                                <TextBlock>Wybierz środek transportu:</TextBlock>
+                                <StackPanel Margin="10 5">
+                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Samolot</RadioButton>
+                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Pociąg</RadioButton>
+                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Samochód</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="3" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">Dodaj miasto do listy po prawej:</TextBlock>
+                                <Button Width="100" Height="40" Margin="10 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Dodaj</Button>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="formSection" Grid.Row="3" Grid.Column="1">
+                            <ListBox Height="100"/>
+                        </Border>
+                    </Grid>
+                    
+                    <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Padding="20 10"
+                            Margin="0 20"
+                            >
+                        Wyślij
+                    </Button>
+                    
+                </StackPanel>
+            </Border>
         </StackPanel>
-    </StackPanel>
+    </Border>
 </Window>
