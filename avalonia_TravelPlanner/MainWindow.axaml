@@ -47,7 +47,7 @@
                         <Border Classes="formSection" Grid.Row="0" Grid.Column="0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center">Imię:</TextBlock>
-                                <TextBox x:Name="FirstName" Width="200" Margin="5 0"/>
+                                <TextBox Name="FirstName" Width="200" Margin="5 0"/>
                             </StackPanel>
                         </Border>
 
@@ -61,7 +61,12 @@
                         <Border Classes="formSection" Grid.Row="1" Grid.Column="0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center">Wybierz kraj:</TextBlock>
-                                <ComboBox x:Name="ChosenCountry" Margin="5 0" Width="200">
+                                <ComboBox x:Name="CountrySelectionComboBox"
+                                          SelectionChanged="ImageComboBox_OnSelectionChanged"
+                                          VerticalAlignment="Center"
+                                          Margin="5 0"
+                                          Width="200"
+                                          >
                                     <ComboBoxItem>Niemcy</ComboBoxItem>
                                     <ComboBoxItem>Japonia</ComboBoxItem>
                                     <ComboBoxItem>Wielka Brytania</ComboBoxItem>
@@ -70,17 +75,16 @@
                         </Border>
 
                         <Border Classes="formSection" Grid.Row="1" Grid.Column="1">
-                            <!-- TODO zdjęcie -->
-                            <Image x:Name="RespectiveImage"/>
+                            <Image x:Name="RespectiveImage" Width="200" Height="200"/>
                         </Border>
 
                         <Border Classes="formSection" Grid.Row="2" Grid.Column="0">
                             <StackPanel>
                                 <TextBlock>Wybierz atrakcje:</TextBlock>
                                 <StackPanel Margin="10 5">
-                                    <CheckBox Margin="0 5">Parki narodowe</CheckBox>
-                                    <CheckBox Margin="0 5">Zabytki</CheckBox>
-                                    <CheckBox Margin="0 5">Miejsca historyczne</CheckBox>
+                                    <CheckBox Name="NationalParks" Margin="0 5">Parki narodowe</CheckBox>
+                                    <CheckBox Name="Monuments" Margin="0 5">Zabytki</CheckBox>
+                                    <CheckBox Name="HistoricalPlaces" Margin="0 5">Miejsca historyczne</CheckBox>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -89,22 +93,31 @@
                             <StackPanel>
                                 <TextBlock>Wybierz środek transportu:</TextBlock>
                                 <StackPanel Margin="10 5">
-                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Samolot</RadioButton>
-                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Pociąg</RadioButton>
-                                    <RadioButton GroupName="TransportMethod" Margin="0 5">Samochód</RadioButton>
+                                    <RadioButton Name="Airplane" GroupName="TravelMethod" Margin="0 5">Samolot</RadioButton>
+                                    <RadioButton Name="Train" GroupName="TravelMethod" Margin="0 5">Pociąg</RadioButton>
+                                    <RadioButton Name="Car" GroupName="TravelMethod" Margin="0 5">Samochód</RadioButton>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
 
                         <Border Classes="formSection" Grid.Row="3" Grid.Column="0">
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
                                 <TextBlock VerticalAlignment="Center">Dodaj miasto do listy po prawej:</TextBlock>
-                                <Button Width="100" Height="40" Margin="10 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Dodaj</Button>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBox x:Name="CityToAddToList" Width="200"/>
+                                    <Button Width="100" Height="40" Margin="10 0"
+                                            HorizontalContentAlignment="Center" 
+                                            VerticalContentAlignment="Center"
+                                            Click="AddItemToListBox"
+                                    >
+                                        Dodaj
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
 
                         <Border Classes="formSection" Grid.Row="3" Grid.Column="1">
-                            <ListBox Height="100"/>
+                            <ListBox Height="100" x:Name="CitiesListBox"/>
                         </Border>
                     </Grid>
                     
@@ -112,6 +125,7 @@
                             HorizontalAlignment="Center"
                             Padding="20 10"
                             Margin="0 20"
+                            Click="SubmitData"
                             >
                         Wyślij
                     </Button>
@@ -120,4 +134,5 @@
             </Border>
         </StackPanel>
     </Border>
+    
 </Window>

@@ -7,10 +7,30 @@
         Title="FormResult"
         Width="700"
         Height="500"
-        CanResize="False"
-        WindowStartupLocation="CenterOwner"
-        >
-        <StackPanel Orientation="Vertical">
-                <TextBlock>TODO</TextBlock>
-        </StackPanel>
+        WindowStartupLocation="CenterOwner">
+    
+    <Window.Styles>
+        <Style Selector="TextBlock.header">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        
+        <Style Selector="Border.formResultBorder">
+            <Setter Property="Margin" Value="25 40"/>
+            <Setter Property="BorderBrush" Value="#363636"/>
+            <Setter Property="Background" Value="#E2E2E2"/>
+        </Style>
+        
+        <Style Selector="TextBlock.formResult">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="LineSpacing" Value="7"/>
+            <Setter Property="Margin" Value="10 20"></Setter>
+        </Style>
+    </Window.Styles>
+    
+    <StackPanel Margin="20">
+        <TextBlock Classes="header" HorizontalAlignment="Center" TextAlignment="Center">Podane dane:</TextBlock>
+        <Border Classes="formResultBorder">
+            <TextBlock Name="ResultText" Classes="formResult" HorizontalAlignment="Stretch"/>
+        </Border>
+    </StackPanel>
 </Window>
